@@ -7,11 +7,17 @@ import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import java.io.BufferedReader
+import java.nio.Buffer
+import java.nio.file.Paths
+import kotlin.io.path.Path
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    val bufferedReader = BufferedReader(Paths.get("/mapdata/Marae.csv"));
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +48,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // (name: String, x: Double, y: Double, location: String, iwi: String)
         val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
         val xy = LatLng(arai.x, arai.y)
+
+
+        val maraeData = Array(1060) { Marae() }
+
+        val maraeData = getMaraeData(bufferedReader)
 
         // Add a marker in Sydney and move the camera
             //val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
