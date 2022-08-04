@@ -10,6 +10,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.maps.databinding.ActivityMapsBinding
+import com.example.maps.Marae
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -40,9 +41,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        // Create a Marae instance at Te Uru
+        // Marae(name: String, wharenui: String, X: Double, Y: Double, location: String, iwi: String, hapu: String, search: String) {
+        // (name: String, x: Double, y: Double, location: String, iwi: String)
+        val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
+        val xy = LatLng(arai.x, arai.y)
+
         // Add a marker in Sydney and move the camera
-        val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
-        mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
+            //val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
+
+        mMap.addMarker(MarkerOptions().position(arai.position).title(arai.name))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(arai.position))
     }
 }
