@@ -36,44 +36,41 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
         //this.hapu = _hapu
         //this.search = _search
 
-        println("new Marae object : $name")
     }
 
     constructor() : this("default", 0.0, 0.0, "default_location", "default_iwi")
-
-
-
     }
 
     // create getMaraeData method
             // needs to be fed Paths.get("/mapdata/Marae.csv"));
     fun getMaraeData(bufferedReader: BufferedReader): Array<Marae> {
 
-        val csvParser = CSVParser(bufferedReader, CSVFormat.DEFAULT)
+        var csvParser = CSVParser(bufferedReader, CSVFormat.DEFAULT)
 
-        val maraeData = Array(1059) { Marae() }
+        var maraeData = Array(1058) { Marae() }
         var i = 0
 
         // iterate through CSV file
         for (csvRecord in csvParser) {
-            if(i > 0) {
 
-                val name = csvRecord.get(1)
-                val x = csvRecord.get(5).toDouble()
-                val y = csvRecord.get(6).toDouble()
-                println("-- -- -- -- -- --")
-                println("x + y : " + x + y)
-                println("-- -- -- -- -- --")
-                val location = csvRecord.get(7)
-                val iwi = csvRecord.get(8)
+                var name = csvRecord.get(1)
+                var x = csvRecord.get(5).toDouble()
+                var y = csvRecord.get(6).toDouble()
+                var location = csvRecord.get(7)
+                var iwi = csvRecord.get(8)
 
-                val i = i + 1
+
                 // update maraeData at i
                 maraeData[i].name = name
                 maraeData[i].x = x
                 maraeData[i].y = y
                 maraeData[i].location = location
-            }
+                maraeData[i].iwi = iwi
+                println("-- -- -- -- -- --")
+                println("marae Name : ${maraeData[i].name}")
+                println("-- -- -- -- -- --")
+
+                var i = i + 1
 
 
         }

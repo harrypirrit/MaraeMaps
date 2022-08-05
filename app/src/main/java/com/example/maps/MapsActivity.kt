@@ -42,26 +42,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        //var bufferedReader = InputStreamReader(assets.open("Marae.csv")).buffered()
+        // var maraeData = getMaraeData(bufferedReader)
 
-        val bufferedReader = InputStreamReader(assets.open("Marae.csv")).buffered()
-        val maraeData = getMaraeData(bufferedReader)
+//        println("maraeData : $maraeData")
 
-        // Create a Marae instance at Te Uru
-        // Marae(name: String, wharenui: String, X: Double, Y: Double, location: String, iwi: String, hapu: String, search: String) {
-        // (name: String, x: Double, y: Double, location: String, iwi: String)
-        val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
-        val xy = LatLng(arai.x, arai.y)
+                // Create a Marae instance at Te Uru
+                        // Marae(name: String, wharenui: String, X: Double, Y: Double, location: String, iwi: String, hapu: String, search: String) {
+                        // (name: String, x: Double, y: Double, location: String, iwi: String)
 
+                //val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
+                //val xy = LatLng(arai.x, arai.y)
 
         // Add a marker in Sydney and move the camera
-            //val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
+        mMap = googleMap
+        val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
+        mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
 
-        val i = 0
 //        for (marae in maraeData) {
 //            mMap.addMarker(MarkerOptions().position(marae.position).title(marae.name))
 //        }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(xy))
+
+
     }
 }
