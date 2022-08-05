@@ -57,7 +57,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
             //val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
 
-        mMap.addMarker(MarkerOptions().position(arai.position).title(arai.name))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(arai.position))
+        val i = 0
+//        for (marae in maraeData) {
+//            mMap.addMarker(MarkerOptions().position(marae.position).title(marae.name))
+//        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(xy))
     }
 }

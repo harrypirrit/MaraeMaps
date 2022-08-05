@@ -51,29 +51,30 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
 
         val csvParser = CSVParser(bufferedReader, CSVFormat.DEFAULT)
 
-        val maraeData = Array(1060) { Marae() }
+        val maraeData = Array(1059) { Marae() }
         var i = 0
 
         // iterate through CSV file
         for (csvRecord in csvParser) {
-            println(csvRecord)
+            if(i > 0) {
 
-            val name = csvRecord.get(1)
-            val x = csvRecord.get(5).toDouble()
-            val y = csvRecord.get(6).toDouble()
-            println("-- -- -- -- -- --")
-            println("x + y : " +x +y)
-            println("-- -- -- -- -- --")
-            val location = csvRecord.get(7)
-            val iwi = csvRecord.get(8)
+                val name = csvRecord.get(1)
+                val x = csvRecord.get(5).toDouble()
+                val y = csvRecord.get(6).toDouble()
+                println("-- -- -- -- -- --")
+                println("x + y : " + x + y)
+                println("-- -- -- -- -- --")
+                val location = csvRecord.get(7)
+                val iwi = csvRecord.get(8)
 
-            i = i +1
-            // update maraeData at i
-            maraeData[i].name = name
-            maraeData[i].x = x
-            maraeData[i].y = y
-            maraeData[i].location = location
-            
+                val i = i + 1
+                // update maraeData at i
+                maraeData[i].name = name
+                maraeData[i].x = x
+                maraeData[i].y = y
+                maraeData[i].location = location
+            }
+
 
         }
 
