@@ -4,6 +4,12 @@ import com.google.android.gms.maps.model.LatLng
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.BufferedReader
+import java.io.FileReader
+import java.io.InputStreamReader
+import java.nio.channels.AsynchronousFileChannel.open
+import android.os.Bundle
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.MarkerOptions
 
 class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: String) {
     //implement below as complete constructor
@@ -42,6 +48,7 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
     // create getMaraeData method
             // needs to be fed Paths.get("/mapdata/Marae.csv"));
     fun getMaraeData(bufferedReader: BufferedReader): Array<Marae> {
+
         val csvParser = CSVParser(bufferedReader, CSVFormat.DEFAULT)
 
         val maraeData = Array(1060) { Marae() }
@@ -51,18 +58,22 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
         for (csvRecord in csvParser) {
             println(csvRecord)
 
-//            val name = csvRecord.get(1)
-//            val x = csvRecord.get(5)
-//            val y = csvRecord.get(6)
-//            val location = csvRecord.get(7)
-//            val iwi = csvRecord.get(8)
+            val name = csvRecord.get(1)
+            val x = csvRecord.get(5).toDouble()
+            val y = csvRecord.get(6).toDouble()
+            println("-- -- -- -- -- --")
+            println("x + y : " +x +y)
+            println("-- -- -- -- -- --")
+            val location = csvRecord.get(7)
+            val iwi = csvRecord.get(8)
 
             i = i +1
             // update maraeData at i
-//            maraeData[i].name = name
-//            maraeData[i].x = x
-//            maraeData[i].y = y
-//            maraeData[i].location = location
+            maraeData[i].name = name
+            maraeData[i].x = x
+            maraeData[i].y = y
+            maraeData[i].location = location
+            
 
         }
 
