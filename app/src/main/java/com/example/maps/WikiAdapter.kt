@@ -26,6 +26,16 @@ class WikiAdapter(private val maraeCollection: MaraeCollection) :
 
         init {
             descriptionTV = view.findViewById(R.id.marae_description_tv);
+            addListener()
+        }
+
+        /**
+         * Adds an on click listener to the view that this ViewHolder has
+         */
+        private fun addListener()  {
+            descriptionTV.setOnClickListener {
+                // TODO: Open a new marae info screen
+            }
         }
     }
 
