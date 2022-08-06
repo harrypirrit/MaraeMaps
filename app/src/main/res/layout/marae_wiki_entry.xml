@@ -9,7 +9,7 @@
         android:id="@+id/marae_description_tv"
         android:layout_width="434dp"
         android:layout_height="26dp"
-        android:text="<insert marae description>"
+        android:text="insert marae description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
