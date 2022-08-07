@@ -1,4 +1,4 @@
-package com.example.maps
+/*package com.example.maps
 
 /**
  * Class to hold a collection of Marae
@@ -54,4 +54,4 @@ class MaraeCollection constructor(private val maraeArr: Array<Marae>) {
     }
 
     // TODO: a method for getting a description of all relevant marae?
-}
+}*/
