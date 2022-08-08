@@ -42,27 +42,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        //var bufferedReader = InputStreamReader(assets.open("Marae.csv")).buffered()
-        // var maraeData = getMaraeData(bufferedReader)
-
-//        println("maraeData : $maraeData")
-
-                // Create a Marae instance at Te Uru
-                        // Marae(name: String, wharenui: String, X: Double, Y: Double, location: String, iwi: String, hapu: String, search: String) {
-                        // (name: String, x: Double, y: Double, location: String, iwi: String)
-
-                //val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
-                //val xy = LatLng(arai.x, arai.y)
+        mMap = googleMap
+        val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
 
         // Add a marker in Sydney and move the camera
-        mMap = googleMap
         val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
-        mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
+        mMap.addMarker(MarkerOptions().position(arai.position).title(arai.name))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(arai.position))
 
-//        for (marae in maraeData) {
-//            mMap.addMarker(MarkerOptions().position(marae.position).title(marae.name))
-//        }
+        var bufferedReader = InputStreamReader(assets.open("Marae.csv")).buffered()
+        var maraeData = getMaraeData(bufferedReader)
+
+        // Make thread wait a second for data to be loaded
+        //android.os.SystemClock.sleep(1000)
+
+        for (marae in maraeData) {
+            println("marae name : ${marae.name}")
+            println("marae position : ${marae.position}")
+            mMap.addMarker(MarkerOptions().position(marae.position).title(marae.name))
+        }
 
 
 

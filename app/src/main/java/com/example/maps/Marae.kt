@@ -42,20 +42,22 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
     }
 
     // create getMaraeData method
-            // needs to be fed Paths.get("/mapdata/Marae.csv"));
     fun getMaraeData(bufferedReader: BufferedReader): Array<Marae> {
 
         var csvParser = CSVParser(bufferedReader, CSVFormat.DEFAULT)
 
-        var maraeData = Array(1058) { Marae() }
-        var i = 0
+        var maraeData = Array(10) { Marae() }
 
         // iterate through CSV file
-        for (csvRecord in csvParser) {
+        for ((i, csvRecord) in csvParser.withIndex()) {
+
+            if (i < 10) {
+                println("marae[$i]")
 
                 var name = csvRecord.get(1)
                 var x = csvRecord.get(5).toDouble()
                 var y = csvRecord.get(6).toDouble()
+                var position = LatLng(x, y)
                 var location = csvRecord.get(7)
                 var iwi = csvRecord.get(8)
 
@@ -64,15 +66,10 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
                 maraeData[i].name = name
                 maraeData[i].x = x
                 maraeData[i].y = y
+                maraeData[i].position = position
                 maraeData[i].location = location
                 maraeData[i].iwi = iwi
-                println("-- -- -- -- -- --")
-                println("marae Name : ${maraeData[i].name}")
-                println("-- -- -- -- -- --")
-
-                var i = i + 1
-
-
+            }
         }
 
         return maraeData
