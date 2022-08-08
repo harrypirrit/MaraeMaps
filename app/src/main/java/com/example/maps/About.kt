@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.widget.ListView
 import android.widget.ArrayAdapter
 
-
 class About : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +24,18 @@ class About : AppCompatActivity() {
 
         ourListView.setOnItemClickListener{parent, view, position, id ->
 
-            /* what happens at positions one, two, three */
-            //Need an onclick and intent to set to SettingsActivity
+            // Upon click, this will go to Settings activity.
+            if (position==0){
+
+            }
+            // Upon click, this will go to About Us fragment.
+            if (position==1){
+
+            }
+            // Upon click, this will go to Credits fragment.
+            if (position==2){
+
+            }
 
         }
 
