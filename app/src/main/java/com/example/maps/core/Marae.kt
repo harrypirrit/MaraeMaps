@@ -1,4 +1,4 @@
-package com.example.maps
+package com.example.maps.core
 
 import com.google.android.gms.maps.model.LatLng
 import org.apache.commons.csv.CSVFormat
