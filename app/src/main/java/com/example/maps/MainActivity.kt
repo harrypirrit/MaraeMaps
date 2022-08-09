@@ -3,7 +3,6 @@ package com.example.maps
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.navigation.findNavController
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_maps, R.id.navigation_wiki, R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
