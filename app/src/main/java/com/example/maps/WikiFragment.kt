@@ -56,4 +56,11 @@ class WikiFragment : Fragment() {
                 }
             }
     }
+
+    /**
+    * Adds a search listener to the search box
+    */
+    fun addSearchListener() {
+
+    }
 }
