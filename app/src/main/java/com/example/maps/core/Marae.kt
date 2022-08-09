@@ -38,6 +38,10 @@ class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: Str
 
     }
 
+    override fun toString(): String {
+        return "Marae object with name: ${name}, belonging to ${iwi}, located in ${location}"
+    }
+
     constructor() : this("default", 0.0, 0.0, "default_location", "default_iwi")
 }
 
