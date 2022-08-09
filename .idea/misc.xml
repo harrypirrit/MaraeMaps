@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/activity_about.xml" value="0.14074074074074075" />
+        <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/activity_main.xml" value="0.14994934143870314" />
+        <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/fragment_about_us.xml" value="0.22" />
+        <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/fragment_credits.xml" value="0.1187214611872146" />
+        <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/fragment_dashboard.xml" value="0.20314083080040526" />
+        <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/fragment_info_list.xml" value="0.25" />
         <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/recycler_view_item.xml" value="0.15" />
         <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/recycler_view_item_1.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Kavan/AndroidStudioProjects/MaraeMaps/app/src/main/res/layout/settings_activity.xml" value="0.1" />
