@@ -1,7 +1,7 @@
 /*package com.example.maps
 
 /**
- * Class to hold a collection of Marae
+* Class to hold a collection of Marae
  *
  * @author Hugo Phibbs
  * @since 6/8/22
