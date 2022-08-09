@@ -3,9 +3,9 @@ package com.example.maps
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
+        // What does nav host fragment activity main do?
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -37,9 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Switches to the wiki fragment as per a user's requst
+     * Switches to the wiki fragment as per a user's request
      */
     fun switchToWikiFragment() {
-        TODO("Implement me!")
+        // TODO generalise this method?
+        supportFragmentManager.commit {
+            replace<WikiFragment>(R.id.mainContentFragmentContainer)
+            setReorderingAllowed(true)
+            addToBackStack(null)// TODO set a name?
+        }
     }
 }
