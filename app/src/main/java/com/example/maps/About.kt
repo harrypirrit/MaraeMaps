@@ -29,6 +29,8 @@ class About : AppCompatActivity() {
 
         ourListView.setOnItemClickListener{parent, view, position, id ->
 
+            /*switch positions to go to fragments/activities
+             */
         }
 
     }
