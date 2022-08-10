@@ -1,7 +1,5 @@
 package com.example.maps.core
 
-import com.example.maps.Marae
-
 /**
 * Class to hold a collection of Marae
  *
@@ -20,12 +18,20 @@ class MaraeCollection constructor(private val maraeArr: Array<Marae>) {
      * Does not change the state of this MaraeCollection, instead returns another MaraeCollection.
      * This is so the friendly methods of this class can be used for another collection of Marae
      *
-     * @param keyWord String for a string query entered by a user
+     * @param searchString String for a string query entered by a user
      * @return a new MaraeCollection with contained Marae
      */
-    fun searchMarae(keyWord: String): MaraeCollection {
-        // TODO: implement me!
-        return MaraeCollection(arrayOf<Marae>());
+    fun searchMarae(searchString: String): MaraeCollection {
+        // TODO normalize maori vowels, perhaps it's own function?
+        val result : ArrayList<Marae> = ArrayList();
+        for (marae in maraeArr) {
+            for (keyWord in marae.keyWords()) {
+                if (keyWord.lowercase().contains(searchString.lowercase())) {
+                    result.add(marae)
+                }
+            }
+        }
+        return MaraeCollection(result.toTypedArray());
     }
 
     /**
