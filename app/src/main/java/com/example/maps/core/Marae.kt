@@ -4,42 +4,39 @@ import com.google.android.gms.maps.model.LatLng
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.BufferedReader
-import java.io.FileReader
-import java.io.InputStreamReader
-import java.nio.channels.AsynchronousFileChannel.open
-import android.os.Bundle
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.MarkerOptions
 
-class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: String) {
-    //implement below as complete constructor
+/**
+ * Class to represent a Marae
+ *
+ * @param name name of this marae
+ * @param x x coordinate of this marae
+ * @param y y coordinate of this marae
+ * @param location String for the location (region) of this Marae
+ * @param iwi String for the iwi that this Marae belongs to
+ */
+class Marae (var name: String, var x: Double, var y: Double, var location: String, var iwi: String) {
+    // TODO implement below as complete constructor
     // class Marae (_name: String, _wharenui: String, _x: Double, _y: Double, _location: String, _iwi: String, _hapu: String, _search: String) {
 
-    var name: String
     // var wharenui: String
-    var x: Double
-    var y: Double
-    var position: LatLng
-    var location: String
-    var iwi: String
     // var hapu: String
-    // var search: String
-
-    init {
-        this.name = _name
-        //this.wharenui = _wharenui
-        this.x = _x
-        this.y = _y
-        this.position = LatLng(x, y)
-        this.location = _location
-        this.iwi = _iwi
-        //this.hapu = _hapu
-        //this.search = _search
-
-    }
+    // var search: String TODO what's search?
+    var position: LatLng = LatLng(x, y)
 
     override fun toString(): String {
         return "Marae object with name: ${name}, belonging to ${iwi}, located in ${location}"
+    }
+
+    /**
+     * Function to return the keywords of this Marae
+     *
+     * Intended to be used for searching a list of marae
+     *
+     * @return array of Strings as described
+     */
+    fun keyWords() : Array<String>{
+        // TODO update for hapu, wharenui etc?
+        return arrayOf(name, iwi, location)
     }
 
     constructor() : this("default", 0.0, 0.0, "default_location", "default_iwi")
