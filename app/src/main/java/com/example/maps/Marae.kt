@@ -1,15 +1,9 @@
-package com.example.maps.core
+package com.example.maps
 
 import com.google.android.gms.maps.model.LatLng
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.BufferedReader
-import java.io.FileReader
-import java.io.InputStreamReader
-import java.nio.channels.AsynchronousFileChannel.open
-import android.os.Bundle
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.MarkerOptions
 
 class Marae (_name: String, _x: Double, _y: Double, _location: String, _iwi: String) {
     //implement below as complete constructor

@@ -1,6 +1,4 @@
-package com.example.maps.core
-
-import com.example.maps.core.Marae
+package com.example.maps
 
 /**
 * Class to hold a collection of Marae
