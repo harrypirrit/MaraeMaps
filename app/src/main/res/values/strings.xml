@@ -12,4 +12,8 @@
     <string name="credits_blurb">We would like to thank</string>
     <string name="about_us_fragment">About Us</string>
     <string name="about_us_blurb">"We are a group of students "</string>
+    
+    <string name="map">Map</string>
+    <string name="wiki">Wiki</string>
+    <string name="settings">Settings</string>
 </resources>
