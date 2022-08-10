@@ -7,7 +7,6 @@ import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import java.io.InputStreamReader
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -37,24 +36,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val arai = Marae("Arai Te Uru", -45.83955732551009, 170.4870606057339, "Te Paihere", "UniqueIwi" )
 
         // Add a marker in Sydney and move the camera
         val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
-        mMap.addMarker(MarkerOptions().position(arai.position).title(arai.name))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(arai.position))
-
-        var bufferedReader = InputStreamReader(assets.open("Marae.csv")).buffered()
-        var maraeData = getMaraeData(bufferedReader)
-
-        // Make thread wait a second for data to be loaded
-        //android.os.SystemClock.sleep(1000)
-
-//        for (marae in maraeData) {ow t
-//            mMap.addMarker(MarkerOptions().position(marae.position).title(marae.name))
-//        }
-
-
-
+        mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
     }
 }
