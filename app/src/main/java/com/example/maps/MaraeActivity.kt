@@ -3,6 +3,7 @@ package com.example.maps
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.maps.core.Marae
 import com.google.gson.Gson
 
 
@@ -39,7 +40,7 @@ class MaraeActivity : AppCompatActivity() {
         val region = findViewById<TextView>(R.id.textViewRegion)
 
         val gson = Gson()
-        val maraeModel = gson.fromJson(param1, MaraeX::class.java)
+        val maraeModel = gson.fromJson(param1, Marae::class.java)
 
 
         title.text = maraeModel.Name
