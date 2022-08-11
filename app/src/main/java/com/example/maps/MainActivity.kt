@@ -21,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val infoView = binding.infoButton
+
+        infoView.setOnClickListener{ view ->
+            //start fragment
+        }
+
+
         val navView: BottomNavigationView = binding.navView
 
         // What does nav host fragment activity main do?
