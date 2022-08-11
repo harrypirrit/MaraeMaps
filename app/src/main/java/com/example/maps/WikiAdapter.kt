@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maps.core.MaraeCollection
 import com.example.maps.R
+import com.example.maps.core.MaraeController
 
 /**
  * Custom RecyclerView Adapter class that helps display Marae wiki entries to a user
@@ -46,7 +47,7 @@ class WikiAdapter(private val maraeCollection: MaraeCollection) :
     }
 
     override fun onBindViewHolder(holder: MaraeWikiEntryVH, position: Int) {
-        holder.descriptionTV.text = maraeCollection.getMaraeAtIndex(position).toString()
+        holder.descriptionTV.text = MaraeController().maraeToString(maraeCollection.getMaraeAtIndex(position))
     }
 
     override fun getItemCount(): Int {
