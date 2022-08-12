@@ -34,17 +34,19 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 
     /**
      * Switches to the wiki fragment as per a user's request
      */
-//    fun switchToWikiFragment() {
-//        // TODO generalise this method?
-//        supportFragmentManager.commit {
-//            replace<WikiFragment>(R.id.mainContentFragmentContainer)
-//            setReorderingAllowed(true)
-//            addToBackStack(null)// TODO set a name?
-//        }
-//    }
+    fun switchToWikiFragment() {
+        // TODO generalise this method?
+        supportFragmentManager.commit {
+            replace<WikiFragment>(R.id.mainContentFragmentContainer)
+            setReorderingAllowed(true)
+            addToBackStack(null)// TODO set a name?
+        }
+    }
 }
