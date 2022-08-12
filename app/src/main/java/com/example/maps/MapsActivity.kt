@@ -2,11 +2,17 @@ package com.example.maps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle;
+import com.example.maps.core.Marae
 import com.example.maps.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.*
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -38,10 +44,30 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
-        mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
 
 
+        val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
+        val  maraeCollection = getMaraeCollection(bufferedReader)
+
+        var mMarkers: ArrayList<Marker> = ArrayList()
+
+        if (maraeCollection != null) {
+            for (marae in maraeCollection) {
+                println("marae name: ${marae.Name}")
+                val LL = LatLng(marae.X, marae.Y)
+                mMarkers.add(
+                    mMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
+                )
+            }
+        }
+    }
+
+    fun getMaraeCollection(bufferedReader : BufferedReader): Array<Marae> {
+
+        // lateinit var jsonString: String
+        val jsonString = bufferedReader.use(BufferedReader::readText)
+
+        val arrayMaraeType = object : TypeToken<Array<Marae>>() {}.type
+        return Gson().fromJson(jsonString, arrayMaraeType)
     }
 }

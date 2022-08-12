@@ -1,5 +1,6 @@
 package com.example.maps
 
+import android.app.Activity
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
+        val  maraeCollection = getMaraeCollection(bufferedReader)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -40,8 +44,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
-        val maraeCollection = getMaraeCollection(bufferedReader)
+
 
 
     }
