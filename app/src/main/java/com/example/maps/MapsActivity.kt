@@ -41,5 +41,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val Arai_Te_Uru = LatLng(-45.83955732551009, 170.4870606057339)
         mMap.addMarker(MarkerOptions().position(Arai_Te_Uru).title("Marker at Arai_Te_Uru"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Arai_Te_Uru))
+
+
     }
 }

@@ -9,7 +9,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.maps.core.Marae
 import com.example.maps.databinding.ActivityMainBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
+        val maraeCollection = getMaraeCollection(bufferedReader)
+
 
     }
 
@@ -48,5 +56,15 @@ class MainActivity : AppCompatActivity() {
             setReorderingAllowed(true)
             addToBackStack(null)// TODO set a name?
         }
+    }
+
+//    fun getMaraeCollection(bufferedReader : BufferedReader): Array<Marae> {
+    fun getMaraeCollection(bufferedReader : BufferedReader): Array<Marae> {
+
+        // lateinit var jsonString: String
+        val jsonString = bufferedReader.use(BufferedReader::readText)
+
+        val arrayMaraeType = object : TypeToken<Array<Marae>>() {}.type
+        return Gson().fromJson(jsonString, arrayMaraeType)
     }
 }

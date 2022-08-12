@@ -18,7 +18,6 @@ class MaraeController {
     //val marae = getMaraeCollection()
 
     public fun getMaraeCollection(json: String): List<Marae> {
-
         lateinit var jsonString: String
         jsonString = json
 
