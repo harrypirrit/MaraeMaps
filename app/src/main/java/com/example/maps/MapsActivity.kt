@@ -45,20 +45,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
 
+        // Add a marker in Sydney and move the camera
+        val arai = LatLng(-45.83955732551009, 170.4870606057339)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(arai))
+
+
 
         val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
         val  maraeCollection = getMaraeCollection(bufferedReader)
 
-        var mMarkers: ArrayList<Marker> = ArrayList()
+        // Create a Marker array and iterate through marae to add them to the map
+        var mMarkers: java.util.ArrayList<Marker> = java.util.ArrayList()
 
-        if (maraeCollection != null) {
-            for (marae in maraeCollection) {
-                println("marae name: ${marae.Name}")
-                val LL = LatLng(marae.X, marae.Y)
-                mMarkers.add(
-                    mMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
-                )
-            }
+        for (marae in maraeCollection) {
+            val LL = LatLng(marae.Y, marae.X)
+            mMarkers.add(
+                mMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
+            )
         }
     }
 
