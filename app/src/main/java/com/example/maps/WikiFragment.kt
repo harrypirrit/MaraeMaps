@@ -20,7 +20,7 @@ import com.example.maps.core.MaraeCollection
  * create an instance of this fragment.
  */
 class WikiFragment : Fragment() {
-    private lateinit var recyclerView : RecyclerView;
+    /**private lateinit var recyclerView : RecyclerView;
     private lateinit var searchView: SearchView;
 
     private lateinit var maraeCollection : MaraeCollection;
@@ -32,7 +32,6 @@ class WikiFragment : Fragment() {
         var marae3 = Marae("marae3", 1.toDouble(), 2.toDouble(), "", "")
         maraeCollection = MaraeCollection(arrayOf(marae1, marae2, marae3))
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,5 +78,5 @@ class WikiFragment : Fragment() {
     */
     fun addSearchListener() {
 
-    }
+    }*/
 }

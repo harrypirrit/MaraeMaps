@@ -36,6 +36,12 @@
         app:layout_constraintVertical_bias="0.091" />
 
     <fragment
+        android:id="@+id/info_fragment"
+        android:name="com.example.maps.InfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <fragment
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

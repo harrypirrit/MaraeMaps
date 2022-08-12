@@ -29,11 +29,11 @@ class MaraeCollection constructor(private val maraeArr: Array<Marae>) {
         // TODO normalize maori vowels, perhaps it's own function?
         val result : ArrayList<Marae> = ArrayList();
         for (marae in maraeArr) {
-            for (keyWord in marae.keyWords()) {
+            /**for (keyWord in marae.keyWords()) {
                 if (keyWord.lowercase().contains(searchString.lowercase())) {
                     result.add(marae)
                 }
-            }
+            }*/
         }
         return MaraeCollection(result.toTypedArray());
     }

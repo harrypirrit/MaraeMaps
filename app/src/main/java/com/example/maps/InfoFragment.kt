@@ -1,4 +1,4 @@
-package com.example.maps.ui
+package com.example.maps
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.maps.R
+import com.example.maps.ui.MyInfoRecyclerViewAdapter
 import com.example.maps.ui.placeholder.PlaceholderContent
 
 /**

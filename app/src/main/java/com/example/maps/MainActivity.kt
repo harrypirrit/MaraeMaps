@@ -1,10 +1,9 @@
 package com.example.maps
 
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        val btn = findViewById(R.id.navigation_settings) as Button
+
         val navView: BottomNavigationView = binding.navView
 
         // What does nav host fragment activity main do?
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        btn.setOnClickListener {
+            navController.navigateUp() // to clear previous navigation history
+            navController.navigate(R.id.info_fragment)
+        }
     }
 
     /**
