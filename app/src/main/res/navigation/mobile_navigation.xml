@@ -9,17 +9,40 @@
         android:id="@+id/navigation_maps"
         android:name="com.example.maps.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_maps_to_navigation_wiki"
+            app:destination="@id/navigation_wiki" />
+        <action
+            android:id="@+id/action_navigation_maps_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_wiki"
         android:name="com.example.maps.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_wiki_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_wiki_to_navigation_maps"
+            app:destination="@id/navigation_maps" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.maps.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_wiki"
+            app:destination="@id/navigation_wiki" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_maps2"
+            app:destination="@id/navigation_maps"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

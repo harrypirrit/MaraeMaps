@@ -53,6 +53,23 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'org.apache.commons:commons-csv:1.5'
 
+    // Java language implementation for Navigation
+    implementation("androidx.navigation:navigation-fragment:2.5.1")
+    implementation("androidx.navigation:navigation-ui:2.5.1")
+
+    // Kotlin for Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.1")
+
+    // Feature module Support for Navigation
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.5.1")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.1")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:2.5.1")
+
     implementation 'com.google.code.gson:gson:2.7'
 
 }
