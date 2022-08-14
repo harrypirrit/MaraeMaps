@@ -20,15 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val infoView = binding.infoButton
-
-        infoView.setOnClickListener{ view ->
-            //start fragment
-        }
-
-
-        val btn = findViewById(R.id.navigation_settings) as Button
-
         val navView: BottomNavigationView = binding.navView
 
         // What does nav host fragment activity main do?
@@ -43,10 +34,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        btn.setOnClickListener {
-            navController.navigateUp() // to clear previous navigation history
-            navController.navigate(R.id.info_fragment)
-        }
     }
 
     /**
