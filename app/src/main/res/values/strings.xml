@@ -1,20 +1,22 @@
 <resources>
     <string name="app_name">maps</string>
     <string name="title_activity_maps">MapsActivity</string>
+
     <string name="map_id">7712746dad954cb</string>
+
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="credits_fragment">Credits</string>
     <string name="credits_blurb">We would like to thank</string>
     <string name="about_us_fragment">About Us</string>
     <string name="about_us_blurb">"We are a group of students "</string>
-    
     <string name="map">Map</string>
     <string name="wiki">Wiki</string>
     <string name="settings">Settings</string>
-    <string name="Info" />
+    <string name="info">Info</string>
 </resources>

@@ -23,23 +23,6 @@
 
     <!-- Container view for holding the main content fragment, eg maps, settings, wiki etc-->
     <!-- Default Fragment bellow is MapsFragment-->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mainContentFragmentContainer"
-        android:name="com.example.maps.MapsFragment"
-        android:layout_width="376dp"
-        android:layout_height="606dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
-
-    <fragment
-        android:id="@+id/info_fragment"
-        android:name="com.example.maps.InfoFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
