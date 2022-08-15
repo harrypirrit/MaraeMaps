@@ -6,25 +6,7 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
 
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-
-buildTypes {
-    Properties properties = new Properties()
-    properties.load(project.root.file('local-properties').newDataStreamInput())
-    def maps_api = properties.get("MAPS_API_KEY")
-
-    debug {
-        buildConfigField "String", "MAPS_API_KEY", maps_api
-        resValue('string', "maps_api", maps_api)
-    }
-
-}
-
-/*
-dependencies {
-        implementation 'com.google.code.gson:gson:2.8.9'
-}
- */

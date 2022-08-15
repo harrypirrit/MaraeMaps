@@ -18,6 +18,17 @@ android {
     }
 
     buildTypes {
+        def propFile = rootProject.file("./local.properties")
+        def properties = new Properties()
+        properties.load(new FileInputStream(propFile))
+
+        def maps_api = properties.get("MAPS_API_KEY")
+
+        debug {
+            buildConfigField 'String', "MAPS_API_KEY", maps_api
+            resValue('string', "maps_api", maps_api)
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
