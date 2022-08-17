@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maps.com.example.maps.WikiAdapter
 import com.example.maps.core.Marae
-
 // TODO how are we going to through around the MaraeCollection?
 
 /**
@@ -44,7 +43,6 @@ class WikiFragment(private var maraeList: ArrayList<Marae>) : Fragment() {
 
         // Create the view for this fragment
         val view: View = inflater.inflate(R.layout.fragment_wiki, container, false)
-
         // Add necessary components to the view
 
         addComponentsToView(view);
