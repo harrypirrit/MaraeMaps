@@ -11,32 +11,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maps.com.example.maps.WikiAdapter
 import com.example.maps.core.Marae
-import com.example.maps.core.MaraeCollection
-
 // TODO how are we going to through around the MaraeCollection?
 
 /**
  * A simple [Fragment] subclass.
  * create an instance of this fragment.
+ *
+ * @author Hugo Phibbs
+ * @param maraeList list of all Marae that can be shown on this fragment
  */
-class WikiFragment : Fragment() {
-    private lateinit var recyclerView : RecyclerView;
-    private lateinit var searchView: SearchView;
+class WikiFragment(private var maraeList: ArrayList<Marae>) : Fragment() {
 
-    private lateinit var maraeCollection : MaraeCollection;
+    /**
+     * RecyclerView for showing Marae to a user
+     */
+    private lateinit var recyclerView: RecyclerView;
 
-    private fun initMaraeCollection() {
-        //TODO remove later!
-        //var marae1 = Marae("marae1", 1.toDouble(), 2.toDouble(), "", "")
-        //var marae2 = Marae("marae2", 1.toDouble(), 2.toDouble(), "", "")
-        //var marae3 = Marae("marae3", 1.toDouble(), 2.toDouble(), "", "")
-        //maraeCollection = MaraeCollection(arrayOf(marae1, marae2, marae3))
-    }
-
+    /**
+     * Search view for searching marae from the RecyclerView
+     */
+    private lateinit var maraeSearchView: SearchView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initMaraeCollection()
     }
 
     override fun onCreateView(
@@ -45,8 +42,7 @@ class WikiFragment : Fragment() {
     ): View {
 
         // Create the view for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_wiki, container, false)
-
+        val view: View = inflater.inflate(R.layout.fragment_wiki, container, false)
         // Add necessary components to the view
 
         addComponentsToView(view);
@@ -54,9 +50,9 @@ class WikiFragment : Fragment() {
         return view;
     }
 
-    fun addComponentsToView(view : View) {
+    fun addComponentsToView(view: View) {
         initRecyclerView(view)
-        searchView = view.findViewById(R.id.maraeSearchView);
+        maraeSearchView = view.findViewById(R.id.maraeSearchView);
     }
 
     /**
@@ -70,14 +66,24 @@ class WikiFragment : Fragment() {
         recyclerView = view.findViewById(R.id.wikiRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.adapter = WikiAdapter(maraeCollection);
-
+        recyclerView.adapter = WikiAdapter(maraeList)
     }
 
     /**
-    * Adds a search listener to the search box
-    */
+     * Adds a search listener to the search box
+     */
     fun addSearchListener() {
+        maraeSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                (recyclerView.adapter as WikiAdapter).filter.filter(query)
+                return false
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Does default action
+                return false // TODO anymore to add here, look into what this does!
+            }
+
+        })
     }
 }
