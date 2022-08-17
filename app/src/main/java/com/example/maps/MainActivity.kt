@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    /**
+     * Function to handle click event when on Info fragment.
+     */
+    private fun onFragClick(position: Int){
 
     }
 
