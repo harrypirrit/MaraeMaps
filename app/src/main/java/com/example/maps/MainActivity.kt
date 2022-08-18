@@ -27,7 +27,13 @@ class MainActivity : AppCompatActivity() {
         val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
         val  maraeCollection = getMaraeCollection(bufferedReader)
 
+        var bundle: Bundle
+
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+//        binding.root is reference to root view.
+//        root view is outermost view container in your layout.
+//        when you call binding.root ,will return LinearLayout root view.(below xml code)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView

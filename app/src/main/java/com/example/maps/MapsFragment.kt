@@ -52,17 +52,6 @@ class MapsFragment : Fragment() {
         var mMarkers: ArrayList<Marker> = ArrayList()
 
         var activity: FragmentActivity? = this.activity
-
-//        var maraeCollection = this.activity
-
-//        if (maraeCollection != null) {
-//            for (marae in maraeCollection) {
-//                val LL = LatLng(marae.X, marae.Y)
-//                mMarkers.add(
-//                    googleMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
-//                )
-//            }
-//        }
     }
 
     override fun onCreateView(
