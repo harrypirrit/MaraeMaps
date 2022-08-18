@@ -1,29 +1,39 @@
 package com.example.maps
 
+import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle;
 import com.example.maps.core.Marae
 import com.example.maps.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.*
-
-import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener,GoogleMap.InfoWindowAdapter {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var maraeCollection: Array<Marae>
+
+    private var myContentsView: View? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        myContentsView = layoutInflater.inflate(R.layout.popup, null);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -48,20 +58,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val arai = LatLng(-45.83955732551009, 170.4870606057339)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(arai))
+        mMap.setInfoWindowAdapter(this)
 
 
 
         val bufferedReader = InputStreamReader(assets.open("Marae.json")).buffered()
-        val  maraeCollection = getMaraeCollection(bufferedReader)
+        maraeCollection = getMaraeCollection(bufferedReader)
 
         // Create a Marker array and iterate through marae to add them to the map
         var mMarkers: java.util.ArrayList<Marker> = java.util.ArrayList()
 
         for (marae in maraeCollection) {
             val LL = LatLng(marae.Y, marae.X)
-            mMarkers.add(
-                mMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
-            )
+            val marker: Marker = mMap.addMarker(MarkerOptions().position(LL).title(marae.Name))
+            marker.tag = marae
+            mMarkers.add(marker)
         }
     }
 
@@ -72,5 +83,40 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val arrayMaraeType = object : TypeToken<Array<Marae>>() {}.type
         return Gson().fromJson(jsonString, arrayMaraeType)
+    }
+
+    override fun onMarkerClick(p0: Marker): Boolean {
+
+        TODO("Not yet implemented")
+    }
+
+    override fun getInfoWindow(p0: Marker): View? {
+        return null
+    }
+
+    override fun getInfoContents(p0: Marker): View? {
+        val ma: Marae = p0.tag as Marae
+        val iwi = myContentsView?.findViewById<TextView>(com.example.maps.R.id.iwi)
+        val title = myContentsView?.findViewById<TextView>(com.example.maps.R.id.title)
+        val region = myContentsView?.findViewById<TextView>(com.example.maps.R.id.region)
+        val location = myContentsView?.findViewById<TextView>(com.example.maps.R.id.location)
+        if (iwi != null) {
+            if (ma.Iwi == ""){
+                iwi.text = "Iwi information not available"
+            } else {
+                iwi.text = "Iwi: " + ma.Iwi
+            }
+        }
+        if (title != null) {
+            title.text = ma.Name
+        }
+        if (region != null) {
+            region.text = "Region: " + ma.TPK_Region
+        }
+        if (location != null) {
+            location.text = "Address: " + ma.Location
+        }
+        return myContentsView
+
     }
 }
